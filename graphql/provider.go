@@ -72,7 +72,7 @@ func graphqlConfigure(ctx context.Context, d *schema.ResourceData) (interface{},
 	if d.Get("login_query") != "" {
 		queryResponse, resBytes, err := queryExecute(ctx, d, config, "login_query", "login_query_variables")
 		if err != nil {
-			return nil, diag.FromErr(fmt.Errorf("unable to execute read query: %w", err))
+			return nil, diag.FromErr(fmt.Errorf("unable to execute read login_query: %w", err))
 		}
 
 		if queryErrors := queryResponse.ProcessErrors(); queryErrors.HasError() {
